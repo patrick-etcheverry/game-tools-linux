@@ -100,7 +100,7 @@ void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne)
 void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne)
 {
     string codeCouleur = getCodeCouleur(couleur);
-    cout << codeCouleur << caractere << RESET;
+    cout << codeCouleur << caractere << RESET << flush;
     if (retourALaLigne)
     {
         cout << endl;
@@ -111,7 +111,7 @@ void afficherNombreEnCouleur(double nombre, Couleur couleur, bool retourALaLigne
 {
     string codeCouleur = getCodeCouleur(couleur);
 
-    cout << codeCouleur << nombre << RESET;
+    cout << codeCouleur << nombre << RESET << flush;
     if (retourALaLigne)
     {
         cout << endl;
