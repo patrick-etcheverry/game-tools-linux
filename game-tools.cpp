@@ -90,7 +90,7 @@ string getCodeCouleur (Couleur couleur)
 void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne)
 {
     string codeCouleur = getCodeCouleur(couleur);
-    cout << codeCouleur << chaine << RESET;
+    cout << codeCouleur << chaine << RESET << flush;
     if (retourALaLigne)
     {
         cout << endl;
