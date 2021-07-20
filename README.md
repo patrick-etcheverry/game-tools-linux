@@ -1,11 +1,11 @@
 # game-tools-linux
 
-game-tools-linux est un petit module C++ contenant des sous-programmes utiles pour développer des petits jeux s'exécutant dans un terminal. 
+game-tools-linux est un petit module C++ contenant des sous-programmes utiles pour développer des petits jeux s'exécutant dans un terminal.
 
 Cette version du module `game-tools` n'est utilisable que sur des systèmes d'exploitation **linux**.
 
 La documentation Doxygen du projet est disponible sur <a href="https://patrick-etcheverry.github.io/game-tools-linux/files.html">cette page</a>.
- 
+
 
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
 
@@ -37,7 +37,7 @@ int main(void)
 
 **Fichier de démo**
 
-Si vous voulez tester le module `game-tools` vous pouvez également récupérer le fichier `main.cpp` : il contient un petit programme de démonstration qui illustre l'usage des différentes fonctionnalités proposées par `game-tools`. 
+Si vous voulez tester le module `game-tools` vous pouvez également récupérer le fichier `main.cpp` : il contient un petit programme de démonstration qui illustre l'usage des différentes fonctionnalités proposées par `game-tools`.
 
 
 ## Utilisation
@@ -47,7 +47,7 @@ Si vous voulez tester le module `game-tools` vous pouvez également récupérer 
 
 La fonction `random` permet de générer un nombre **entier** compris dans un intervalle défini par une valeur minimale et une valeur maximale.
 
-Le code ci-dessous montre un exemple d'usage de la fonction `random` pour générer un nombre entier compris entre 0 et 100. 
+Le code ci-dessous montre un exemple d'usage de la fonction `random` pour générer un nombre entier compris entre 0 et 100.
 
 ```cpp
 #include "game-tools.h"
@@ -71,12 +71,42 @@ int main(void)
 ![Générer un nombre entier aléatoire](screenshots/aleatoire.jpg)
 
 
+### Manipuler des couleurs
+Le module *game-tools* met à disposition un type `Couleur` qui peut être utilisé pour déclarer des variables représentant des couleurs :  
+
+```cpp
+#include "game-tools.h"
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+   Couleur maCouleurPreferee; // une variable de type Couleur
+
+   return 0;
+}
+```
+
+Les variables de type `Couleur` peuvent prendre les valeurs suivantes bleu, vert, cyan, rouge, violet, jaune ou blanc :
+```cpp
+#include "game-tools.h"
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+   Couleur maCouleurPreferee;
+   maCouleurPreferee = bleu;
+
+   return 0;
+}
+```
+
+
 
 ### Afficher du texte en couleur
 
-Le module *game-tools* propose un sous-programme `afficherTexteEnCouleur` qui permet d'afficher une chaîne de caractères (ou un caractère) dans une couleur particulière. Suite à l'affichage de la chaîne il est éventuellement possible d'ajouter un saut de ligne (voir exemple dans le code ci-dessous).
-
-Les couleurs disponibles sont les suivantes : bleu, vert, cyan, rouge, violet, jaune et blanc.
+Le module *game-tools* propose un sous-programme `afficherTexteEnCouleur` qui permet d'afficher une chaîne de caractères (ou un caractère) dans une couleur particulière. Cette couleur particulière sera de type `Couleur` (voir section précédente). Suite à l'affichage de la chaîne il est éventuellement possible d'ajouter un saut de ligne (voir exemple dans le code ci-dessous).
 
 Le code ci-dessous donne quelques exemples d'usage du sous-programme `afficherTexteEnCouleur` :
 ```cpp
@@ -89,16 +119,16 @@ int main(void)
     // Afficher des textes en couleur
     cout << "** Du texte en couleur **" << endl;
 
-    /* Affiche le mot "Tous" en bleu SANS retour à la ligne 
+    /* Affiche le mot "Tous" en bleu SANS retour à la ligne
        (car utilisation de la valeur false en dernier paramètre) */
-    afficherTexteEnCouleur("Tous ", bleu, false); 
+    afficherTexteEnCouleur("Tous ", bleu, false);
 
     afficherTexteEnCouleur("les ", vert, false);
     afficherTexteEnCouleur("programmeurs ", cyan, false);
     afficherTexteEnCouleur("sont ", rouge, false);
     afficherTexteEnCouleur("des ", violet, false);
 
-    /* Affiche le mot "optimistes" en jaune AVEC retour à la ligne 
+    /* Affiche le mot "optimistes" en jaune AVEC retour à la ligne
        (car utilisation de la valeur true en dernier paramètre) */
     afficherTexteEnCouleur("optimistes", jaune, true);
    return 0;
@@ -118,11 +148,9 @@ afficherTexteEnCouleur('A', cyan, false); // Affiche le caractère A en bleu cya
 
 ### Afficher des nombres en couleur
 
-La procédure `afficherNombreEnCouleur` permet d'afficher des nombres avec une couleur particulière. Son fonctionnement est similaire à celui de la procédure `afficherTexteEnCouleur`.
+La procédure `afficherNombreEnCouleur` permet d'afficher des nombres avec une couleur particulière. Son fonctionnement est similaire à celui de la procédure `afficherTexteEnCouleur`. Les couleurs utilisées devront être de type `Couleur` (voir section correspondante ci-dessus).
 
 Les nombres à afficher en couleur peuvent être des nombres entiers ou des nombres à virgule. Suite à l'affichage d'un nombre il est également possible d'ajouter un saut de ligne (voir exemple dans le code ci-dessous).
-
-Les couleurs disponibles sont les suivantes : bleu, vert, cyan, rouge, violet, jaune et blanc.
 
 Le code ci-dessous donne quelques exemples d'usage du sous-programme `afficherNombreEnCouleur` :
 ```cpp
@@ -135,7 +163,7 @@ int main(void)
    // Afficher des nombres en couleur
     cout << "** Des nombres en couleur **" << endl;
 
-    /* Affiche le nombre 5 en bleu AVEC retour à la ligne 
+    /* Affiche le nombre 5 en bleu AVEC retour à la ligne
        (car utilisation de la valeur true en dernier paramètre) */
     afficherNombreEnCouleur(5, bleu, true);
 
@@ -155,7 +183,7 @@ int main(void)
 
 
 
-### Mettre en pause 
+### Mettre en pause
 
 La procédure `pause` permet de stopper l'exécution du code durant un temps déterminé ou jusqu'à ce que l'utilisateur appuie sur une touche.
 
@@ -173,7 +201,7 @@ int main(void)
     // Afficher un triangle coloré de manière progressive
     cout << "Appuyer sur Entree pour afficher progressivement un triangle en couleur..." << endl;
 
-    /* Pas de durée spécifiée : 
+    /* Pas de durée spécifiée :
        -> code mis en pause jusqu'à ce que l'utilisateur appuie sur une touche */
     pause();  
 
@@ -197,7 +225,7 @@ int main(void)
 
 
 
-### Effacer le contenu du terminal 
+### Effacer le contenu du terminal
 
 La procédure `effacer` permet d'effacer le contenu affiché dans le terminal. Le code ci-dessous donne un exemple d'utilisation de cette fonctionnalité :
 
