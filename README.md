@@ -139,11 +139,19 @@ int main(void)
 ![Afficher un texte en couleur](screenshots/texte-en-couleur.jpg)
 
 
-**Remarque**
+**Remarques**
 
-La procédure `afficherTexteEnCouleur` peut également afficher de simples caractères en couleur. Par exemple :
+- La procédure `afficherTexteEnCouleur` peut également afficher de simples caractères en couleur. Par exemple :
 ```cpp
 afficherTexteEnCouleur('A', cyan, false); // Affiche le caractère A en bleu cyan.
+```
+- Par défaut, aucun retour à la ligne n'est ajouté suite à l'affichage du texte. Ainsi, lorsqu'aucun retour à la ligne n'est nécessaire, on peut aussi bien écrire :
+```cpp
+afficherTexteEnCouleur("Tous ", bleu, false);
+```
+que :
+```cpp
+afficherTexteEnCouleur("Tous ", bleu);
 ```
 
 
@@ -182,7 +190,16 @@ int main(void)
 
 ![Afficher des nombres en couleur](screenshots/nombre-en-couleur.jpg)
 
+**Remarque**
 
+Par défaut, aucun retour à la ligne n'est ajouté suite à l'affichage du nombre. Ainsi, lorsqu'aucun retour à la ligne n'est nécessaire, on peut aussi bien écrire :
+```cpp
+afficherNombreEnCouleur(5, bleu, false);
+```
+que :
+```cpp
+afficherNombreEnCouleur(5, bleu);
+```
 
 ### Mettre en pause
 
