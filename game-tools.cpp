@@ -26,7 +26,7 @@ int random(int min, int max)
     unsigned int tempsActuel = static_cast<unsigned int>(chrono::steady_clock::now().time_since_epoch().count());
     generateur.seed(tempsActuel);
 
-    return ((distributionNombres(generateur) % (max + 1)) + min);
+    return ((distributionNombres(generateur) % (max - min + 1)) + min);
 }
 
 void pause(unsigned int dureeEnSecondes)
