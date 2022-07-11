@@ -4,14 +4,14 @@
 
 #include <unistd.h> // pour la fonction usleep
 
-#define RESET "\e[0m"
-#define ROUGE "\e[0;31m"
-#define VERT "\e[0;32m"
-#define JAUNE "\e[0;33m"
-#define BLEU "\e[0;34m"
-#define VIOLET "\e[0;35m"
-#define CYAN "\e[0;36m"
-#define BLANC "\e[0;37m"
+#define RESET "\033[0m"
+#define ROUGE "\033[0;31m"
+#define VERT "\033[0;32m"
+#define JAUNE "\033[0;33m"
+#define BLEU "\033[0;34m"
+#define VIOLET "\033[0;35m"
+#define CYAN "\033[0;36m"
+#define BLANC "\033[0;37m"
 
 
 int random (int min, int max)
