@@ -1,33 +1,27 @@
-/**
- * @file game-tools.cpp
- * @author Patrick Etcheverry
- * @brief Corps du module game-tools
- * @date 2021-09-16
- */
 #include "game-tools.h"
 
-#include <chrono>  // pour la fonction now() utilisée dans la fonction random()
-#include <random>  // pour la fonction random
+#include <random> // pour la fonction random
+
 #include <unistd.h> // pour la fonction usleep
 
-#define RESET "\033[0m"
-#define ROUGE "\033[0;31m"
-#define VERT "\033[0;32m"
-#define JAUNE "\033[0;33m"
-#define BLEU "\033[0;34m"
-#define VIOLET "\033[0;35m"
-#define CYAN "\033[0;36m"
-#define BLANC "\033[0;37m"
+#define RESET "\e[0m"
+#define ROUGE "\e[0;31m"
+#define VERT "\e[0;32m"
+#define JAUNE "\e[0;33m"
+#define BLEU "\e[0;34m"
+#define VIOLET "\e[0;35m"
+#define CYAN "\e[0;36m"
+#define BLANC "\e[0;37m"
 
-int random(int min, int max)
+
+int random (int min, int max)
 {
-    std::default_random_engine generateur;
-    std::uniform_int_distribution<int> distributionNombres;
-    unsigned int tempsActuel = static_cast<unsigned int>(chrono::steady_clock::now().time_since_epoch().count());
-    generateur.seed(tempsActuel);
+    thread_local std::mt19937 intervalle(std::random_device{}());
+    std::uniform_real_distribution<double> dist(min, max+1);
 
-    return ((distributionNombres(generateur) % (max - min + 1)) + min);
+    return int(dist(intervalle));
 }
+
 
 void pause(unsigned int dureeEnSecondes)
 {
@@ -102,7 +96,7 @@ void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne)
 void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne)
 {
     string codeCouleur = getCodeCouleur(couleur);
-    cout << codeCouleur << caractere << RESET << flush;
+    cout << codeCouleur << caractere << RESET;
     if (retourALaLigne)
     {
         cout << endl;
@@ -113,10 +107,9 @@ void afficherNombreEnCouleur(double nombre, Couleur couleur, bool retourALaLigne
 {
     string codeCouleur = getCodeCouleur(couleur);
 
-    cout << codeCouleur << nombre << RESET << flush;
+    cout << codeCouleur << nombre << RESET;
     if (retourALaLigne)
     {
         cout << endl;
     }
 }
-
