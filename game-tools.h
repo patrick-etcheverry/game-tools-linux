@@ -4,8 +4,8 @@
  * @brief Fichier d'entête du module game-tools
  * @date 2021-07-12
  */
-# ifndef GAME_TOOLS_H
-# define GAME_TOOLS_H
+#ifndef GAME_TOOLS_H
+#define GAME_TOOLS_H
 
 #include <iostream>
 using namespace std;
@@ -15,7 +15,17 @@ using namespace std;
  * procedures #afficherTexteEnCouleur et #afficherNombreEnCouleur
  *
  */
-enum Couleur {gris, bleu, vert,  cyan, rouge, violet, jaune, blanc};
+enum Couleur
+{
+    gris = 7,
+    bleu = 9,
+    vert = 10,
+    cyan = 11,
+    rouge = 12,
+    violet = 13,
+    jaune = 14,
+    blanc = 15
+};
 
 /**
  * @brief Permet d'afficher une chaine de caractères en couleur.
@@ -28,7 +38,6 @@ enum Couleur {gris, bleu, vert,  cyan, rouge, violet, jaune, blanc};
  */
 void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne = false);
 
-
 /**
  * @brief Permet d'afficher un caractère en couleur.
  *
@@ -40,7 +49,6 @@ void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne 
  */
 void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne = false);
 
-
 /**
  * @brief Permet d'afficher un nombre en couleur.
  *
@@ -51,9 +59,6 @@ void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne
  * retour à la ligne (true) ou pas (false).
  */
 void afficherNombreEnCouleur(double nombre, Couleur couleur, bool retourALaLigne = false);
-
-
-
 
 /**
  * @brief Génère un nombre entier aléatoire compris dans un intervalle donné.
@@ -68,7 +73,7 @@ int random(int min, int max);
  * @brief Met en pause l'exécution du programme durant un temps
  * déterminé ou jusqu'à ce que l'utilisateur appuie sur une touche.
  *
- * @param [in] dureeEnSecondes la durée en secondes de la pause. Si ce 
+ * @param [in] dureeEnSecondes la durée en secondes de la pause. Si ce
  * paramètre est égal à 0, le programme s'interrompt jusqu'à ce que
  * l'utilisateur appuie sur une touche.
  */
@@ -77,7 +82,7 @@ int random(int min, int max);
  * @brief Met en pause l'exécution du programme durant un temps
  * déterminé ou jusqu'à ce que l'utilisateur appuie sur une touche.
  *
- * @param [in] dureeEnSecondes la durée en secondes de la pause. Si ce 
+ * @param [in] dureeEnSecondes la durée en secondes de la pause. Si ce
  * paramètre est égal à 0, le programme s'interrompt jusqu'à ce que
  * l'utilisateur appuie sur une touche.
  */
